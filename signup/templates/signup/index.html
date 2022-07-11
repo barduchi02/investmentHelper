@@ -1,0 +1,43 @@
+{% extends "base_registration.html" %}
+
+{% block content %}
+    <div class="text-center">
+        {% if form.errors %}
+           {% for field in form %}
+               {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                       <strong>{{ error|escape }}</strong>
+                  </div>
+               {% endfor %}
+           {% endfor %}
+        {% endif %}
+        {% if message %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endif %}
+
+        <form method="post" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Formulário de Cadastro</h1>
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}" class="sr-only">Usuário</label>
+                {% csrf_token %}
+                <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" placeholder="Nome de usuário">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}" class="sr-only">E-mail</label>
+                <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}" class="sr-only">Senha</label>
+                <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="Senha">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.confirm_password.id_for_label }}" class="sr-only">Confirme sua senha</label>
+                <input type="password" class="form-control" id="{{ form.confirm_password.id_for_label }}" name="{{ form.confirm_password.html_name }}" placeholder="Confirme sua senha">
+            </div>
+            <button type="submit" class="btn btn-lg btn-success btn-block">Inscrever-se</button>
+            <a class="btn btn-lg btn-primary btn-block" href="../login/">Voltar</a>
+        </form>
+    </div>
+{% endblock %}
