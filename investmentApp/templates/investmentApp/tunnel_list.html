@@ -1,0 +1,47 @@
+{% extends "base_generic_menu.html" %}
+{% block include %}
+    {% load static %}
+    <script type="text/javascript" charset="utf8" src="{% static 'investmentApp/js/tunnel_list.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Lista de túneis configurados</h2>
+        <table id="tunnels_table" class="display">
+            <thead>
+                <tr>
+                    <th>Ativo</th>
+                    <th>Última configuração</th>
+                    <th>Período de checagem</th>
+                    <th>Última atualização</th>
+                    <th>Última cotação</th>
+                    <th>Mudança percentual</th>
+                    <th>Preço máximo</th>
+                    <th>Preço mínimo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tunnel in object_list %}
+                    <tr>
+                        <td>{{ tunnel.assetid.code }}</td>
+                        <td>{{ tunnel.date_updated|date:"d/m/Y H:i:s" }}</td>
+                        <td>{{ tunnel.period|time:"H:i" }}</td>
+                        {% if tunnel.cotationid is not None %}
+                            <td>{{ tunnel.cotationid.updated_at|date:"d/m/Y H:i:s" }}</td>
+                            <td>{{ tunnel.cotationid.currency }} {{ tunnel.cotationid.price|floatformat }}</td>
+                            <td>{{ tunnel.cotationid.change_percents|floatformat }}</td>
+                        {% else %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                        <td>{{ tunnel.max_price|floatformat }}</td>
+                        <td>{{ tunnel.min_price|floatformat }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container text-right pt-2">
+            <a class="btn btn-lg btn-success" href="/investmentApp/update-tunnel/0">Criar novo túnel</a>
+        </div>
+    </div>
+{% endblock %}

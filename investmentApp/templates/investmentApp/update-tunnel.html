@@ -1,0 +1,30 @@
+{% extends "base_generic_menu.html" %}
+{% block content %}
+    <div class="container">
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            {% for field in form %}
+              {% for error in field.errors %}
+                <div class="alert alert-danger">
+                  <strong>{{ field.label }}: {{ error|escape }}</strong>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div>
+            <form action="" method="POST">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Configuração de Túnel</h1>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group w-75 mx-auto">
+                        <!--suppress XmlInvalidId -->
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-lg btn-primary btn-block w-75 mx-auto" value="Configurar">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+.fundo {
+    background-color: #1a4770
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #1a4770 !important;
+}
+
+.btn-primary:hover {
+    background-color: #4c7fad !important;
+}
