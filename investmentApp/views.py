@@ -38,3 +38,10 @@ def update_tunnel(request, tunnel_id):
             return redirect('/investmentApp/')
 
     return render(request, 'investmentApp/update-tunnel.html', {'form': form, 'tunnel': tunnel})
+
+
+@login_required
+def delete_tunnel(request, tunnel_id):
+    tunnel = get_object_or_404(Tunnel, pk=tunnel_id)
+    tunnel.delete()
+    return redirect('/investmentApp/')

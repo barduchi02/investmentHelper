@@ -1,5 +1,8 @@
 $(document).ready( function () {
     $('#tunnels_table').DataTable({
+        "columnDefs":[
+            { targets: [8, 9, 10], orderable: false }
+        ],
         "language": {
             "decimal": ",",
             "emptyTable":     "não há dados disponíveis",
