@@ -9,8 +9,8 @@ class TunnelForm(forms.ModelForm):
     assetid = forms.ModelChoiceField(queryset=Asset.objects.all(), empty_label='Selecionar Ativo', label='Ativo')
     period = forms.TimeField(label='Perído de atualização',
                              error_messages={'invalid': 'Por favor, entre com um período de tempo válido (HH:mm)'})
-    max_price = forms.FloatField(label='Preço máximo', min_value=0)
     min_price = forms.FloatField(label='Preço mínimo', min_value=0)
+    max_price = forms.FloatField(label='Preço máximo', min_value=0)
 
     def __init__(self, *args, **kwargs):
         super(TunnelForm, self).__init__(*args, **kwargs)
@@ -24,7 +24,7 @@ class TunnelForm(forms.ModelForm):
 
     class Meta:
         model = Tunnel
-        fields = ['assetid', 'period', 'max_price', 'min_price']
+        fields = ['assetid', 'period', 'min_price', 'max_price']
 
     def clean(self):
         cleaned_data = super(TunnelForm, self).clean()

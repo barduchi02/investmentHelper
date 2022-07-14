@@ -15,8 +15,8 @@
                     <th>Última atualização</th>
                     <th>Última cotação</th>
                     <th>Mudança percentual</th>
-                    <th>Preço máximo</th>
                     <th>Preço mínimo</th>
+                    <th>Preço máximo</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,15 +27,15 @@
                         <td>{{ tunnel.period|time:"H:i" }}</td>
                         {% if tunnel.cotationid is not None %}
                             <td>{{ tunnel.cotationid.updated_at|date:"d/m/Y H:i:s" }}</td>
-                            <td>{{ tunnel.cotationid.currency }} {{ tunnel.cotationid.price|floatformat }}</td>
-                            <td>{{ tunnel.cotationid.change_percents|floatformat }}</td>
+                            <td>{{ tunnel.cotationid.currency }} {{ tunnel.cotationid.price|floatformat:2 }}</td>
+                            <td>{{ tunnel.cotationid.change_percent|floatformat:3 }}</td>
                         {% else %}
                             <td></td>
                             <td></td>
                             <td></td>
                         {% endif %}
-                        <td>{{ tunnel.max_price|floatformat }}</td>
-                        <td>{{ tunnel.min_price|floatformat }}</td>
+                        <td>{{ tunnel.min_price|floatformat:2 }}</td>
+                        <td>{{ tunnel.max_price|floatformat:2 }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
