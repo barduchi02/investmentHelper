@@ -1,5 +1,5 @@
 # Investment Helper
-An Django project that helps investors to monitor B3 actives, and let them know when to buy or sell monitored actives.
+A Django project that helps investors to monitor B3 actives, and let them know when to buy or sell monitored actives.
 
 # Requirements
 1. **Numpy** package (pip install numpy)
