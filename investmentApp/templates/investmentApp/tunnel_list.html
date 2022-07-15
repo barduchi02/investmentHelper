@@ -46,7 +46,7 @@
                         {% endif %}
                         <td>{{ tunnel.min_price|floatformat:2 }}</td>
                         <td>{{ tunnel.max_price|floatformat:2 }}</td>
-                        <td><a href="#" title="Visualizar cotações"><i class="bi bi-search ml-1 mr-1"></i></a> </td>
+                        <td><a href="/investmentApp/show-cotation/{{ tunnel.pk }}" title="Visualizar cotações"><i class="bi bi-search ml-1 mr-1"></i></a></td>
                         <td><a href="/investmentApp/update-tunnel/{{ tunnel.pk }}" title="Editar túnel"><i class="bi bi-pencil-square ml-1 mr-1"></i></a></td>
                         <td><a href="/investmentApp/delete-tunnel/{{ tunnel.pk }}" title="Excluir túnel"><i class="bi bi-x-square ml-1 mr-1"></i></a> </td>
                     </tr>

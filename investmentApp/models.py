@@ -27,6 +27,14 @@ class Cotation(models.Model):
 
     updated_at = models.DateTimeField()
 
+    def __str__(self):
+        return {'date': self.date.strftime("d/m/Y H:i:s"),
+                'price:': self.price,
+                'currency': self.currency,
+                'change_percent': self.change_percent,
+                'updated_at': self.updated_at.strftime("d/m/Y H:i:s")
+                }
+
 
 class Tunnel(models.Model):
     userid = models.ForeignKey(User, on_delete=models.CASCADE)

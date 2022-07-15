@@ -1,0 +1,16 @@
+{% extends "base_generic_menu.html" %}
+{% block include %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% load static %}
+    <script type="text/javascript" charset="utf8" src="{% static 'investmentApp/js/show_cotation.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Informações do ativo: {{ data.asset_code }} - {{ data.asset_description }}</h2>
+        {{ data|json_script:"data" }}
+        <div>
+            <canvas id="cotationChart"></canvas>
+        </div>
+        <a type="button" class="btn btn-lg btn-primary btn-block w-75 mx-auto" href="/investmentApp/">Voltar</a>
+    </div>
+{% endblock %}
